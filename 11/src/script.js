@@ -60,6 +60,10 @@ const material = new THREE.MeshStandardMaterial();
 material.metalness = 0.7;
 material.roughness = 0.2;
 material.side = THREE.DoubleSide;
+material.map = doorColorTexture;
+material.aoMap = doorAmbientOcclusionTexture;
+// material.displacementMap = doorHeightTexture;
+material.normalMap = doorNormalTexture;
 
 gui.add(material, 'metalness').min(0).max(1).step(0.0001);
 gui.add(material, 'roughness').min(0).max(1).step(0.0001);
@@ -77,14 +81,14 @@ torus.position.x = 1.5;
 
 scene.add(sphere, plane, torus);
 
-// Light
+// Light -> MeshStandardMaterial do not need light with our environment
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-const pointLight = new THREE.PointLight(0xffffff, 30);
-pointLight.position.x = 3;
-pointLight.position.y = 3;
-pointLight.position.z = 2;
-scene.add(ambientLight, pointLight);
+// const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+// const pointLight = new THREE.PointLight(0xffffff, 30);
+// pointLight.position.x = 3;
+// pointLight.position.y = 3;
+// pointLight.position.z = 2;
+// scene.add(ambientLight, pointLight);
 
 // Environment
 
